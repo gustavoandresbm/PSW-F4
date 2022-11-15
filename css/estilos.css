@@ -1,0 +1,9 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #3EC1D3;
+    top: 50%;
+    left:50%;
+    color: aliceblue;
+}

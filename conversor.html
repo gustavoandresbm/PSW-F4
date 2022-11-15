@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="descripción"
+        content="Aplicativo en JavaScript de la empresa Electronic SAS para calcular la equivalencia en el tamaño de datos">
+    <meta name="palabras claves" content="JavaScript, Calculadora, Datos,Tamaño, Equivalencia">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Electronic SAS - Calculadora de ventas</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<SCRIPT LANGUAGE="JavaScript">
+
+    function SoloNumeroDecimal(e, field) {
+
+        key = e.keyCode ? e.keyCode : e.which
+        // espacio
+        if (key == 8) return true
+        // 0-9
+        if (key > 47 && key < 58) {
+            if (field.value == "") return true
+            //la cantidad de desimales
+            regexp = /.[0-9]{3}$/
+            return !(regexp.test(field.value))
+        }
+        // el punto.
+        if (key == 46) {
+            if (field.value == "") return false
+            regexp = /^[0-9]+$/
+            return regexp.test(field.value)
+        }
+        // other key
+        return false
+    }
+
+    function SoloNumero(evt) {
+
+        evt = (evt) ? evt : window.event
+        var charCode = (evt.which) ? evt.which : evt.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            status = "This field accepts numbers only."
+            return false
+        }
+        status = ""
+        return true
+
+    }
+</script>
+<header>
+    <h1>Electronic SAS</h1>
+    <img src="img/logo.png" alt="Logo del sitio" height="115" width="115">
+</header>
+
+<body style="background-color: #f8efc1;">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-#FF9A00">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Utilidades
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                            <li><a class="dropdown-item" href="calculadora.html">Valor de venta y ganancia</a></li>
+                            <li><a class="dropdown-item" href="conversor.html">Equivalencia tamaño datos</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Inventario
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <li><a class="dropdown-item" href="ingresarproducto.html">Ingresar producto</a></li>
+                            <li><a class="dropdown-item" href="actualizarproducto.html">Actualizar producto</a></li>
+                            <li><a class="dropdown-item" href="eliminarproducto.html">Eliminar producto</a></li>
+                            <li><a class="dropdown-item" href="consultarproducto.html">Consultar producto</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Administrador
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="width: 500px; border:1px double #ea764a; background-color: #ea764a;">
+
+        <br>
+        <h2 style="color: white">Calculadora</h2>
+        <br>
+        <h4>Equivalencia del tamaño de datos</h4>
+        <br>
+
+
+
+
+        <form name="cg" action="conversorgigas.html" method="POST">
+            <div class="container mt-3">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <label for="medidaingresada">Seleccione la medida que va a ingresar:</label>
+                            <select name="opc1" class="form-control"
+                                style="width: 300px; margin-left: 50%;transform: translateX(-50%)">
+                                <option value="1000000000" style="color: blue">Bytes</option>
+                                <option value="1000000" style="color: black">Kylobyte</option>
+                                <option value="1000" style="color: black">Megabyte</option>
+                                <option value="1" style="color: brown">Gigabyte</option>
+                                <option value="0.001" style="color: brown">Terabyte</option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="col">
+                            <label for="valoraconvertir">Valor a convertir:</label>
+                            <input type="text" class="form-control" id="vc" name="vc"
+                                placeholder="Ingrese el valor a convertir"
+                                style="width: 300px; margin-left: 50%;transform: translateX(-50%)"
+                                onKeyPress="return SoloNumero(event)">
+                        </div>
+                        <br><br><br>
+                        <div class="col">
+                            <label for="medidaaconvertir">Seleccione la medida a convertir:</label>
+                            <select name="opc2" class="form-control"
+                                style="width: 300px; margin-left: 50%;transform: translateX(-50%)">
+                                <option value="1000000000" style="color: black">Bytes</option>
+                                <option value="1000000" style="color: black">Kylobyte</option>
+                                <option value="1000" style="color: black">Megabyte</option>
+                                <option value="1" style="color: brown">Gigabyte</option>
+                                <option value="0.001" style="color: brown">Terabyte</option>
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <br><br>
+            <input type="Button" name="" value="convertir" onclick="calculardatos()" class="btn btn-primary"
+                style="width: 100px; margin-left: 50%;transform: translateX(-50%);background-color:#484C7F;">
+            <br><br>
+            <fieldset disabled>
+                <input type="text" class="form-control" id="conv" name="conv" placeholder="Resultado"
+                    style="width: 300px; margin-left: 50%;transform: translateX(-50%)">
+                <br>
+        </form>
+    </div>
+    </form>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+<footer>
+
+    <br>
+
+    <p>Fecha de actualización: Octubre 25 de 2022</p>
+
+</footer>
+
+</html>
