@@ -39,7 +39,7 @@ if (mysqli_num_rows($result) > 0) {
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Datos</h4>
-          <button class="close" onclick="location.href='../index.html'">&times;</button>
+          <button class="close" onclick="location.href='../consultarproducto.html'">&times;</button>
         </div>
         
         <!-- Modal body -->
@@ -60,7 +60,7 @@ if (mysqli_num_rows($result) > 0) {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-danger" onclick="location.href='../index.html'">Cerrar</button>
+          <button class="btn btn-danger" onclick="location.href='..consultarproducto.html'">Cerrar</button>
         </div>
         
       </div>
@@ -93,7 +93,7 @@ if (mysqli_num_rows($result) > 0) {
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Error</h4>
-          <button class="close" onclick="location.href='../index.html'">&times;</button>
+          <button class="close" onclick="location.href='../consultarproducto.html'">&times;</button>
         </div>
         
         <!-- Modal body -->
@@ -108,7 +108,7 @@ if (mysqli_num_rows($result) > 0) {
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button class="btn btn-danger" onclick="location.href='../index.html'">Cerrar</button>
+          <button class="btn btn-danger" onclick="location.href='../consultarproducto.html'">Cerrar</button>
         </div>
         
       </div>
